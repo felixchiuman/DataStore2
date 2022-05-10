@@ -26,10 +26,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setObserver() {
         viewModel.apply {
-            getDataStore().observe(this@MainActivity){
-                binding.etPass.setText(it)
-                binding.btnLogin.setOnClickListener {result ->
-                    Log.d("resultan", it.toString())
+            getDataStore().observe(this@MainActivity){result ->
+                binding.btnLogin.setOnClickListener {
+                    Log.d("resultan", result.toString())
                     Log.d("edittext", binding.etPass.text.toString())
                     if (binding.etPass.text.toString().equals(result)){
                         Toast.makeText(this@MainActivity, "login sukses", Toast.LENGTH_SHORT).show()
